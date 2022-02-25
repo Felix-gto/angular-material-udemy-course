@@ -1,2 +1,43 @@
+<mat-sidenav-container fullscreen>
 
+    <!-- #sidenav = local template reference to be able to refer to the sidenav anywhere on the page-->
+    <mat-sidenav #sidenav>
 
+        <!-- Closes sidenav when we click on one of the navigation list items using the close() method of it's public API -->
+        <mat-nav-list (click)="sidenav.close()">
+
+            <a mat-list-item routerLink="/">
+                <mat-icon>library_books</mat-icon>
+                <span>Courses</span>
+            </a>
+
+            <a mat-list-item routerLink="about">
+                <mat-icon>question_answer</mat-icon>
+                <span>About</span>
+            </a>
+
+            <a mat-list-item>
+                <mat-icon>person_add</mat-icon>
+                <span>Register</span>
+            </a>
+
+            <a mat-list-item>
+                <mat-icon>account_circle</mat-icon>
+                <span>Login</span>
+            </a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-toolbar color="primary">
+
+        <!-- Opens sidenav when clicking the button using the open() method of it's public API -->
+        <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+</mat-sidenav-container>
