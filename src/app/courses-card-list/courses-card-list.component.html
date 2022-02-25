@@ -1,1 +1,36 @@
+<!-- mat-elevation-z7 = standard Angular Material class for making the cards pop-out more for visual effect -->
+<mat-card class="course-card mat-elevation-z7" *ngFor="let course of courses">
 
+    <mat-card-header>
+
+        <!-- Course title -->
+        <mat-card-title>
+            {{course.description}}
+        </mat-card-title>
+
+    </mat-card-header>
+
+    <!-- Course Image -->
+    <img mat-card-image [src]="course.iconUrl">
+
+    <!-- Long description of the course -->
+    <mat-card-content>
+        <p> {{ course.longDescription }}</p>
+    </mat-card-content>
+
+    <!-- Buttons - Action Section of the card -->
+    <mat-card-actions class="course-actions">
+
+        <button mat-raised-button color="primary"
+            [routerLink]="['courses', course.id]">
+            VIEW COURSE
+        </button>
+
+        <button mat-raised-button color="accent"
+            (click)="editCourse(course)">
+            EDIT COURSE
+        </button>
+
+    </mat-card-actions>
+
+</mat-card>
