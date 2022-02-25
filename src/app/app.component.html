@@ -1,9 +1,10 @@
+<!-- Navigation System (added fullscreen attribute to make sure the container occupies the full viewport of the browser) -->
 <mat-sidenav-container fullscreen>
 
-    <!-- #sidenav = local template reference to be able to refer to the sidenav anywhere on the page-->
+    <!-- Sidebar (left vertical navigation) -> #sidenav = local template reference to be able to refer to the sidenav anywhere on the page-->
     <mat-sidenav #sidenav>
 
-        <!-- Closes sidenav when we click on one of the navigation list items using the close() method of it's public API -->
+        <!-- List of Menu items (entries) -> Closes sidenav when we click on one of the Navigation Menu list items using the close() method of the sidenav's public API -->
         <mat-nav-list (click)="sidenav.close()">
 
             <a mat-list-item routerLink="/">
@@ -28,16 +29,38 @@
 
         </mat-nav-list>
     </mat-sidenav>
-
+    
+    <!-- Toolbar (Navbar) - Top level horizontal toolbar -> Set the primary color of our theme (can also use accent etc.) -->
     <mat-toolbar color="primary">
 
-        <!-- Opens sidenav when clicking the button using the open() method of it's public API -->
+        <!-- Material Icon Button (by adding the mat-icon-button directive)   ->   Opens sidenav when clicking the button using the open() method of the sidenav's public API -->
         <button mat-icon-button (click)="sidenav.open()">
             <mat-icon>menu</mat-icon>
         </button>
 
+        <!-- Dropdown Menu -> When we click on the "Screens button" we trigger the <mat-menu #dropdown> where the items are listed -->
+        <a mat-button [matMenuTriggerFor]="dropdown">
+            Screens
+        </a>
+
+        <mat-menu #dropdown>
+            <button mat-menu-item routerLink="/">Courses</button>
+            <button mat-menu-item routerLink="/about">About</button>
+        </mat-menu>
+
+        <a mat-button>
+            <mat-icon>person_add</mat-icon>
+            Register
+        </a>
+
+        <a mat-button>
+            <mat-icon>account_circle</mat-icon>
+            Login
+        </a>
+
     </mat-toolbar>
 
+    <!-- Router (app-routing.module.ts already configured) -->
     <router-outlet></router-outlet>
 
 </mat-sidenav-container>
